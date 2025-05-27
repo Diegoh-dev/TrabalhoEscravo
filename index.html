@@ -32,6 +32,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
@@ -42,6 +44,7 @@
         .nav {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .nav a {
@@ -50,6 +53,7 @@
             padding: 5px 10px;
             border-radius: 3px;
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
 
         .nav a:hover {
@@ -69,6 +73,7 @@
             margin-bottom: 20px;
             font-size: 0.9rem;
             color: #666;
+            word-break: break-word;
         }
 
         .job-header {
@@ -83,12 +88,14 @@
             font-size: 2rem;
             color: #2c3e50;
             margin-bottom: 15px;
+            line-height: 1.2;
+            word-break: break-word;
         }
 
         .company-info {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
@@ -97,6 +104,7 @@
             font-size: 1.2rem;
             color: #3498db;
             font-weight: 600;
+            word-break: break-word;
         }
 
         .location, .salary, .type {
@@ -105,6 +113,7 @@
             border-radius: 15px;
             font-size: 0.9rem;
             color: #555;
+            white-space: nowrap;
         }
 
         .urgent-tag {
@@ -114,6 +123,7 @@
             border-radius: 15px;
             font-size: 0.9rem;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .job-content {
@@ -147,11 +157,13 @@
             margin-bottom: 15px;
             border-bottom: 2px solid #3498db;
             padding-bottom: 5px;
+            word-break: break-word;
         }
 
         .section p, .section li {
             margin-bottom: 10px;
             text-align: justify;
+            word-break: break-word;
         }
 
         .section ul {
@@ -170,6 +182,7 @@
             padding: 15px;
             border-radius: 5px;
             border-left: 4px solid #3498db;
+            word-break: break-word;
         }
 
         .benefit-item strong {
@@ -195,6 +208,8 @@
             cursor: pointer;
             transition: background-color 0.3s;
             margin-top: 15px;
+            width: 100%;
+            max-width: 300px;
         }
 
         .apply-btn:hover {
@@ -209,6 +224,7 @@
 
         .contact-item {
             margin-bottom: 10px;
+            word-break: break-word;
         }
 
         .contact-item strong {
@@ -225,16 +241,18 @@
             background: rgba(0,0,0,0.9);
             z-index: 9999;
             overflow-y: auto;
+            padding: 20px;
         }
 
         .warning-content {
             max-width: 800px;
-            margin: 50px auto;
+            margin: 20px auto;
             padding: 40px;
             background: #e74c3c;
             color: white;
             border-radius: 10px;
             animation: alertBlink 1.5s infinite alternate;
+            word-break: break-word;
         }
 
         @keyframes alertBlink {
@@ -245,13 +263,14 @@
         /* Página de Denúncia */
         .denuncia-content {
             max-width: 800px;
-            margin: 50px auto;
-            padding: 60px 40px;
+            margin: 20px auto;
+            padding: 40px 20px;
             background: #f5f5f5;
             color: #333;
             border-radius: 10px;
             text-align: center;
             animation: denunciaBlink 2s infinite alternate;
+            word-break: break-word;
         }
 
         @keyframes denunciaBlink {
@@ -260,7 +279,7 @@
         }
 
         .denuncia-content h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #e74c3c;
             margin-bottom: 40px;
             font-weight: bold;
@@ -272,24 +291,25 @@
         }
 
         .phone-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
         .phone-number {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #e74c3c;
             background: #fff;
-            padding: 20px 40px;
+            padding: 20px;
             border-radius: 15px;
             display: inline-block;
             margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            word-break: break-word;
         }
 
         .phone-description {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #333;
             font-weight: normal;
         }
@@ -299,7 +319,7 @@
         }
 
         .info-section h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #333;
             margin-bottom: 25px;
             font-weight: bold;
@@ -308,20 +328,21 @@
         .website-box {
             background: #e74c3c;
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            padding: 20px 30px;
+            padding: 20px;
             border-radius: 10px;
             display: inline-block;
             margin-bottom: 20px;
+            word-break: break-all;
         }
 
         .disque-box {
             background: #e74c3c;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
-            padding: 15px 50px;
+            padding: 15px 30px;
             border-radius: 10px;
             display: inline-block;
         }
@@ -329,13 +350,14 @@
         /* Página de Reflexão */
         .reflexao-content {
             max-width: 800px;
-            margin: 50px auto;
-            padding: 60px 40px;
+            margin: 20px auto;
+            padding: 40px 20px;
             background: #1a1a1a;
             color: #e74c3c;
             border-radius: 10px;
             text-align: center;
             animation: reflexaoBlink 1.5s infinite alternate;
+            word-break: break-word;
         }
 
         @keyframes reflexaoBlink {
@@ -344,33 +366,33 @@
         }
 
         .alert-triangle {
-            font-size: 4rem;
+            font-size: 3rem;
             margin: 20px 0;
         }
 
         .reflexao-content h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin: 30px 0;
             font-weight: bold;
             line-height: 1.2;
         }
 
         .reflexao-content h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin: 30px 0;
             font-weight: bold;
         }
 
         .explanation-box {
             background: rgba(231, 76, 60, 0.1);
-            padding: 40px;
+            padding: 40px 20px;
             border-radius: 10px;
             margin: 40px 0;
             border: 2px solid #e74c3c;
         }
 
         .explanation-box p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin: 15px 0;
             font-weight: bold;
             line-height: 1.6;
@@ -388,6 +410,7 @@
             cursor: pointer;
             margin: 10px;
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -395,16 +418,18 @@
         }
 
         .warning-content h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
 
         .warning-content p {
             font-size: 1.1rem;
             margin-bottom: 20px;
             line-height: 1.8;
+            word-break: break-word;
         }
 
         .warning-signs {
@@ -416,7 +441,7 @@
 
         .warning-signs h3 {
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .warning-signs ul {
@@ -427,6 +452,7 @@
         .warning-signs li {
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.2);
+            word-break: break-word;
         }
 
         .warning-signs li:before {
@@ -447,7 +473,7 @@
 
         .contact-help {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
@@ -457,6 +483,7 @@
             padding: 15px;
             border-radius: 5px;
             text-align: center;
+            word-break: break-word;
         }
 
         .suspicious {
@@ -466,20 +493,229 @@
             border-radius: 3px;
         }
 
-
-        .link{
+        .link {
             color: #fff !important;
+            text-decoration: none;
         }
 
+        /* Responsividade para tablets */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .job-header {
+                padding: 20px;
+            }
+
+            .job-title {
+                font-size: 1.5rem;
+            }
+
             .job-content {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
+            .main-content, .sidebar {
+                padding: 20px;
+            }
+
             .company-info {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-content, .denuncia-content, .reflexao-content {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .contact-help {
+                grid-template-columns: 1fr;
+            }
+
+            .phone-number {
+                font-size: 2.5rem;
+                padding: 15px;
+            }
+
+            .denuncia-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .reflexao-content h1 {
+                font-size: 2rem;
+            }
+
+            .reflexao-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .explanation-box p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Responsividade para smartphones */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav {
+                gap: 10px;
+            }
+
+            .nav a {
+                font-size: 0.9rem;
+                padding: 5px 8px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .breadcrumb {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+
+            .job-header {
+                padding: 15px;
+            }
+
+            .job-title {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .company-name {
+                font-size: 1rem;
+            }
+
+            .location, .salary, .type, .urgent-tag {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+
+            .main-content, .sidebar {
+                padding: 15px;
+            }
+
+            .section h3 {
+                font-size: 1.1rem;
+            }
+
+            .section p, .section li {
+                font-size: 0.9rem;
+            }
+
+            .apply-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .warning-content {
+                padding: 20px 15px;
+                margin: 5px;
+            }
+
+            .warning-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .warning-content p {
+                font-size: 1rem;
+            }
+
+            .warning-signs h3 {
+                font-size: 1.1rem;
+            }
+
+            .warning-signs li {
+                font-size: 0.9rem;
+            }
+
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                margin: 5px;
+                display: block;
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .denuncia-content, .reflexao-content {
+                padding: 20px 15px;
+                margin: 5px;
+            }
+
+            .phone-icon {
+                font-size: 2.5rem;
+            }
+
+            .phone-number {
+                font-size: 2rem;
+                padding: 10px 15px;
+            }
+
+            .phone-description {
+                font-size: 1rem;
+            }
+
+            .denuncia-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .info-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .website-box {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .disque-box {
+                font-size: 1.5rem;
+                padding: 10px 20px;
+            }
+
+            .alert-triangle {
+                font-size: 2.5rem;
+            }
+
+            .reflexao-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .reflexao-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .explanation-box {
+                padding: 20px 15px;
+            }
+
+            .explanation-box p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -522,23 +758,12 @@
                     <p>A Agropecuária Santos & Filhos está em expansão e busca trabalhadores dedicados para atuar em nossa propriedade rural localizada na região de Açailândia. Oferecemos excelente oportunidade de crescimento em ambiente de trabalho familiar e acolhedor.</p>
                 </div>
 
-                <!-- <div class="section">
-                    <h3>Responsabilidades</h3>
-                    <ul>
-                        <li>Cuidar do gado bovino (alimentação, limpeza, vacinação)</li>
-                        <li>Manutenção de cercas e instalações rurais</li>
-                        <li>Operação de equipamentos agrícolas básicos</li>
-                        <li>Auxílio no plantio e colheita</li>
-                        <li>Zeladoria geral da propriedade</li>
-                    </ul>
-                </div> -->
-
                 <div class="section">
                     <h3>Benefícios Oferecidos</h3>
                     <div class="benefits-grid">
                         <div class="benefit-item">
                             <strong>Moradia</strong><br>
-                            <span >Casa na fazenda (obrigatória)</span>
+                            <span>Casa na fazenda (obrigatória)</span>
                         </div>
                         <div class="benefit-item">
                             <strong>Alimentação</strong><br>
@@ -546,19 +771,19 @@
                         </div>
                         <div class="benefit-item">
                             <strong>Transporte</strong><br>
-                            <span >Não necessário (mora no local)</span>
+                            <span>Não necessário (mora no local)</span>
                         </div>
                         <div class="benefit-item">
                             <strong>Assistência Médica</strong><br>
-                            <span >Conforme disponibilidade</span>
+                            <span>Conforme disponibilidade</span>
                         </div>
                         <div class="benefit-item">
                             <strong>Férias</strong><br>
-                            <span >Anualmente</span>
+                            <span>Anualmente</span>
                         </div>
                         <div class="benefit-item">
                             <strong>13º Salário</strong><br>
-                            <span >Pago anualmente</span>
+                            <span>Pago anualmente</span>
                         </div>
                     </div>
                 </div>
@@ -572,18 +797,6 @@
                         <li><span>Disponibilidade para começar imediatamente</span></li>
                     </ul>
                 </div>
-
-                <!-- <div class="section">
-                    <h3>Processo Seletivo</h3>
-                    <p>O processo é simples e rápido:</p>
-                    <ol>
-                        <li>Envio do currículo por WhatsApp</li>
-                        <li><span class="suspicious">Entrevista por telefone (sem necessidade de ir até a fazenda)</span></li>
-                        <li><span class="suspicious">Contratação imediata mediante apresentação de documentos</span></li>
-                        <li><span class="suspicious">Transporte até a fazenda será providenciado</span></li>
-                    </ol>
-                    <p><strong>Importante:</strong> <span class="suspicious">Traga todos os documentos pessoais na primeira viagem, pois não há previsão de retorno nos primeiros 6 meses.</span></p>
-                </div> -->
 
                 <div class="apply-section">
                     <h3>Candidate-se Agora!</h3>
@@ -624,7 +837,7 @@
         </div>
     </div>
 
-            <div class="warning-overlay" id="warningOverlay">
+    <div class="warning-overlay" id="warningOverlay">
         <div class="warning-content">
             <h2>🚨 ATENÇÃO - TRABALHO ESCRAVO!</h2>
             
@@ -667,7 +880,7 @@
                         Polícia Militar<br>
                         (24h - emergência)
                     </div>
-                    <a  class="contact-help-item link" href="https://mpt.mp.br/" target="_blank">
+                    <a class="contact-help-item link" href="https://mpt.mp.br/" target="_blank">
                         <strong>🌐 MPT</strong><br>
                         Ministério Público<br>
                         do Trabalho
@@ -680,7 +893,6 @@
             <p style="text-align: center; font-size: 1.3em; margin-top: 30px;"><strong>COMPARTILHE ESTA INFORMAÇÃO - PODE SALVAR VIDAS!</strong></p>
             
             <div style="text-align: center; margin-top: 30px;">
-                <!-- <button class="nav-btn" onclick="showDenunciaPage()">VER INFORMAÇÕES DE DENÚNCIA</button> -->
                 <button class="nav-btn" onclick="showReflexaoPage()">REFLETIR SOBRE O PROBLEMA</button>
             </div>
         </div>
@@ -711,7 +923,7 @@
     </div>
 
     <!-- Página de Reflexão -->
-    <div class="warning-overlay" id="reflexaoPage">
+  <div class="warning-overlay" id="reflexaoPage">
         <div class="reflexao-content">
             <div class="alert-triangle">⚠️</div>
             <h1>PARECE BOM DEMAIS PRA SER VERDADE?</h1>
@@ -731,7 +943,8 @@
         </div>
     </div>
 
-    <script>
+
+        <script>
         function showWarning() {
             hideAllPages();
             document.getElementById('warningOverlay').style.display = 'block';
