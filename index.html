@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprego Maranhão - Vaga Agropecuária</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .job-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .job-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .company-name {
+            font-size: 1.2rem;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .location, .salary, .type {
+            background: #ecf0f1;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .urgent-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .job-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .main-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .benefit-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        .benefit-item strong {
+            color: #2c3e50;
+        }
+
+        .apply-section {
+            background: #ecf0f1;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .apply-btn {
+            background: #27ae60;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .apply-btn:hover {
+            background: #229954;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .contact-item {
+            margin-bottom: 10px;
+        }
+
+        .contact-item strong {
+            color: #2c3e50;
+        }
+
+        .warning-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .warning-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 10px;
+            animation: alertBlink 1.5s infinite alternate;
+        }
+
+        @keyframes alertBlink {
+            0% { background: #e74c3c; }
+            100% { background: #c0392b; }
+        }
+
+        /* Página de Denúncia */
+        .denuncia-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 60px 40px;
+            background: #f5f5f5;
+            color: #333;
+            border-radius: 10px;
+            text-align: center;
+            animation: denunciaBlink 2s infinite alternate;
+        }
+
+        @keyframes denunciaBlink {
+            0% { background: #f5f5f5; }
+            100% { background: #e8e8e8; }
+        }
+
+        .denuncia-content h1 {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 40px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .phone-section {
+            margin: 50px 0;
+        }
+
+        .phone-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .phone-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .phone-description {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .info-section {
+            margin: 50px 0;
+        }
+
+        .info-section h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .website-box {
+            background: #e74c3c;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 20px 30px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .disque-box {
+            background: #e74c3c;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* Página de Reflexão */
+        .reflexao-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 60px 40px;
+            background: #1a1a1a;
+            color: #e74c3c;
+            border-radius: 10px;
+            text-align: center;
+            animation: reflexaoBlink 1.5s infinite alternate;
+        }
+
+        @keyframes reflexaoBlink {
+            0% { background: #1a1a1a; }
+            100% { background: #000; }
+        }
+
+        .alert-triangle {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        .reflexao-content h1 {
+            font-size: 3rem;
+            margin: 30px 0;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .reflexao-content h2 {
+            font-size: 2.5rem;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        .explanation-box {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+            border: 2px solid #e74c3c;
+        }
+
+        .explanation-box p {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        /* Botões de navegação */
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .warning-content h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .warning-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .warning-signs {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .warning-signs h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .warning-signs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .warning-signs li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .warning-signs li:before {
+            content: "⚠️ ";
+            margin-right: 10px;
+        }
+
+        .help-section {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        .help-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-help {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-help-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .suspicious {
+            color: #f1c40f;
+            background: rgba(241,196,64,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+
+        .link{
+            color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            .job-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .company-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="vaga">
+        <div class="header-content">
+            <div class="logo">EmpregoMA.com.br</div>
+            <nav class="nav">
+                <a href="#">Vagas</a>
+                <a href="#">Empresas</a>
+                <a href="#">Para Candidatos</a>
+                <a href="#">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" id="vaga">
+        <div class="breadcrumb">
+            Início > Vagas > Agropecuária > Trabalhador Rural
+        </div>
+
+        <div class="job-header">
+                
+            <h1 class="job-title">Trabalhador Rural - Fazenda Progresso
+                <span class="urgent-tag">URGENTE</span>
+            </h1>
+            <div class="company-info">
+                <span class="company-name">Agropecuária Santos & Filhos Ltda</span>
+                <span class="location">📍 Codó - MA</span>
+                <span class="salary">💰 R$ 3.500 - R$ 4.200</span>
+                <span class="type">⏰ Tempo Integral</span>
+            </div>
+        </div>
+
+        <div class="job-content">
+            <div class="main-content">
+                <div class="section">
+                    <h3>Descrição da Vaga</h3>
+                    <p>A Agropecuária Santos & Filhos está em expansão e busca trabalhadores dedicados para atuar em nossa propriedade rural localizada na região de Açailândia. Oferecemos excelente oportunidade de crescimento em ambiente de trabalho familiar e acolhedor.</p>
+                </div>
+
+                <!-- <div class="section">
+                    <h3>Responsabilidades</h3>
+                    <ul>
+                        <li>Cuidar do gado bovino (alimentação, limpeza, vacinação)</li>
+                        <li>Manutenção de cercas e instalações rurais</li>
+                        <li>Operação de equipamentos agrícolas básicos</li>
+                        <li>Auxílio no plantio e colheita</li>
+                        <li>Zeladoria geral da propriedade</li>
+                    </ul>
+                </div> -->
+
+                <div class="section">
+                    <h3>Benefícios Oferecidos</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <strong>Moradia</strong><br>
+                            <span >Casa na fazenda (obrigatória)</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Alimentação</strong><br>
+                            Café da manhã, almoço e jantar
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Transporte</strong><br>
+                            <span >Não necessário (mora no local)</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Assistência Médica</strong><br>
+                            <span >Conforme disponibilidade</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Férias</strong><br>
+                            <span >Anualmente</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>13º Salário</strong><br>
+                            <span >Pago anualmente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Requisitos</h3>
+                    <ul>
+                        <li>Idade entre 18 e 45 anos</li>
+                        <li>Não necessita de escolaridade</li>
+                        <li>Não necessita de experiência</li>
+                        <li><span>Disponibilidade para começar imediatamente</span></li>
+                    </ul>
+                </div>
+
+                <!-- <div class="section">
+                    <h3>Processo Seletivo</h3>
+                    <p>O processo é simples e rápido:</p>
+                    <ol>
+                        <li>Envio do currículo por WhatsApp</li>
+                        <li><span class="suspicious">Entrevista por telefone (sem necessidade de ir até a fazenda)</span></li>
+                        <li><span class="suspicious">Contratação imediata mediante apresentação de documentos</span></li>
+                        <li><span class="suspicious">Transporte até a fazenda será providenciado</span></li>
+                    </ol>
+                    <p><strong>Importante:</strong> <span class="suspicious">Traga todos os documentos pessoais na primeira viagem, pois não há previsão de retorno nos primeiros 6 meses.</span></p>
+                </div> -->
+
+                <div class="apply-section">
+                    <h3>Candidate-se Agora!</h3>
+                    <button class="apply-btn" onclick="showWarning()">QUERO ME CANDIDATAR</button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <strong>Empresa:</strong><br>
+                        Agropecuária Santos & Filhos Ltda
+                    </div>
+                    <div class="contact-item">
+                        <strong>Responsável:</strong><br>
+                        <span class="suspicious">Sr. João (apenas WhatsApp)</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong><br>
+                        <span class="suspicious">(99) 99999-8888</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>E-mail:</strong><br>
+                        <span class="suspicious">contato.fazenda.santos@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Endereço:</strong><br>
+                        <span class="suspicious">Zona Rural - Açailândia/MA<br>(localização exata será informada após contratação)</span>
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px; border-left: 4px solid #ffc107;">
+                    <strong>⚠️ Atenção:</strong><br>
+                    <span class="suspicious">Vaga com início imediato.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <div class="warning-overlay" id="warningOverlay">
+        <div class="warning-content">
+            <h2>🚨 ATENÇÃO - TRABALHO ESCRAVO!</h2>
+            
+            <p><strong>CUIDADO!</strong> Esta vaga apresenta características típicas de esquemas de <strong>TRABALHO ESCRAVO</strong> e pode estar relacionada ao <strong>TRÁFICO DE PESSOAS</strong> para exploração laboral.</p>
+            
+            <div class="warning-signs">
+                <h3>🔍 SINAIS DE ALERTA IDENTIFICADOS:</h3>
+                <ul>
+                    <li><strong>Isolamento geográfico:</strong> Fazenda em local remoto, sem acesso fácil à cidade</li>
+                    <li><strong>Moradia obrigatória:</strong> Exigência de morar no local de trabalho</li>
+                    <li><strong>Retenção de documentos:</strong> Solicitar todos os documentos na primeira viagem</li>
+                    <li><strong>Jornada excessiva:</strong> Disponibilidade 7 dias por semana</li>
+                    <li><strong>Isolamento social:</strong> "Sem dependentes ou compromissos familiares"</li>
+                    <li><strong>Contrato vago:</strong> Benefícios "conforme disponibilidade/necessidade"</li>
+                    <li><strong>Pagamento irregular:</strong> Não recebe o valor total dos dias trabalhados</li>
+                    <li><strong>Informações imprecisas:</strong> Endereço vago</li>
+                    <li><strong>Urgência artificial:</strong> Pressão para começar "imediatamente"</li>
+                </ul>
+            </div>
+
+            <p><strong>REALIDADE DO TRABALHO ESCRAVO RURAL:</strong> Vítimas são levadas para fazendas isoladas, têm documentos confiscados, são obrigadas a trabalhar em condições degradantes, não recebem salários adequados, ficam "devendo" para o patrão (moradia, alimentação, transporte) e não conseguem sair do local.</p>
+
+            <p><strong>CONSEQUÊNCIAS:</strong> Isolamento total, violência física e psicológica, dívidas que nunca acabam, jornadas exaustivas, falta de assistência médica, impossibilidade de comunicação com familiares, e em casos extremos, ameaças de morte.</p>
+
+            <div class="help-section">
+                <h3>🆘 DENUNCIE E PEÇA AJUDA:</h3>
+                <div class="contact-help">
+                    <div class="contact-help-item">
+                        <strong>📞 Disque 100</strong><br>
+                        Direitos Humanos<br>
+                        (24h - gratuito)
+                    </div>
+                    <div class="contact-help-item">
+                        <strong>📞 197</strong><br>
+                        Polícia Civil<br>
+                        (24h)
+                    </div>
+                    <div class="contact-help-item">
+                        <strong>📞 190</strong><br>
+                        Polícia Militar<br>
+                        (24h - emergência)
+                    </div>
+                    <a  class="contact-help-item link" href="https://mpt.mp.br/" target="_blank">
+                        <strong>🌐 MPT</strong><br>
+                        Ministério Público<br>
+                        do Trabalho
+                    </a>
+                </div>
+            </div>
+
+            <p><strong>LEMBRE-SE:</strong> Trabalho digno garante direitos trabalhistas, não exige isolamento, permite comunicação livre, oferece condições adequadas de moradia e alimentação, respeita jornadas de trabalho e dias de descanso. SEMPRE desconfie de ofertas que parecem "boas demais" ou que exigem isolamento total.</p>
+
+            <p style="text-align: center; font-size: 1.3em; margin-top: 30px;"><strong>COMPARTILHE ESTA INFORMAÇÃO - PODE SALVAR VIDAS!</strong></p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <!-- <button class="nav-btn" onclick="showDenunciaPage()">VER INFORMAÇÕES DE DENÚNCIA</button> -->
+                <button class="nav-btn" onclick="showReflexaoPage()">REFLETIR SOBRE O PROBLEMA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Denúncia -->
+    <div class="warning-overlay" id="denunciaPage">
+        <div class="denuncia-content">
+            <h1>COMBATA O TRÁFICO DE PESSOAS PARA O TRABALHO ESCRAVO</h1>
+            
+            <div class="phone-section">
+                <div class="phone-icon">📞</div>
+                <div class="phone-number">DISQUE 100</div>
+                <div class="phone-description">para denunciar anonimamente</div>
+            </div>
+            
+            <div class="info-section">
+                <h3>MAIS INFORMAÇÕES EM:</h3>
+                <div class="website-box">https://mpt.mp.br/</div>
+                <div class="disque-box">DISQUE</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="nav-btn" onclick="showWarning()">VOLTAR AO ALERTA</button>
+                <button class="nav-btn" onclick="showReflexaoPage()">REFLETIR SOBRE O PROBLEMA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Reflexão -->
+    <div class="warning-overlay" id="reflexaoPage">
+        <div class="reflexao-content">
+            <div class="alert-triangle">⚠️</div>
+            <h1>PARECE BOM DEMAIS PRA SER VERDADE?</h1>
+            
+            <div class="alert-triangle">⚠️</div>
+            <h2>É PORQUE É.</h2>
+            
+            <div class="explanation-box">
+                <p><strong>ESSA VAGA É FALSA.</strong></p>
+                <p><strong>MAS A PROMESSA É REAL – É ASSIM QUE O TRÁFICO DE PESSOAS ACONTECE.</strong></p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="nav-btn" onclick="showWarning()">VOLTAR AO ALERTA</button>
+                <!-- <button class="nav-btn" onclick="showVaga()">VOLTAR PARA O ANÚNCIO</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showWarning() {
+            hideAllPages();
+            document.getElementById('warningOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Scroll to top of warning
+            document.getElementById('warningOverlay').scrollTop = 0;
+           
+        }
+
+        function showDenunciaPage() {
+            hideAllPages();
+            document.getElementById('denunciaPage').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('denunciaPage').scrollTop = 0;
+        }
+
+        function showReflexaoPage() {
+            hideAllPages();
+            document.getElementById('reflexaoPage').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('reflexaoPage').scrollTop = 0;
+        }
+
+        function hideAllPages() {
+            document.getElementById('warningOverlay').style.display = 'none';
+            document.getElementById('denunciaPage').style.display = 'none';
+            document.getElementById('reflexaoPage').style.display = 'none';
+        }
+
+        // Close warning when clicking outside
+        window.onclick = function(event) {
+            const overlays = ['warningOverlay', 'denunciaPage', 'reflexaoPage'];
+            overlays.forEach(function(overlayId) {
+                const overlay = document.getElementById(overlayId);
+                if (event.target == overlay) {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+
+        // Add ESC key to close warning
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                hideAllPages();
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
